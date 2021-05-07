@@ -1,14 +1,8 @@
 # effect_bloc
 
-A new Flutter package project.
+<p align="center">
+<a href="https://pub.dev/packages/effect_bloc"><img src="https://img.shields.io/pub/v/effect_bloc.svg" alt="Pub"></a>
 
-## Getting Started
-
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+<a href="https://github.com/allbrightio/effect_bloc"><img src="https://img.shields.io/github/stars/allbrightio/effect_bloc.svg?style=flat&logo=github&colorB=deeppink&label=stars" alt="Star on Github"></a>
+<a href="https://github.com/passsy/dart-lint"><img src="https://img.shields.io/badge/style-lint-40c4ff.svg" alt="style: lint"></a>
+</p>
