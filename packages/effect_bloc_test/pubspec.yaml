@@ -1,0 +1,15 @@
+name: effect_bloc_test
+description: effect_bloc_test
+version: 0.0.1
+author: Marek Gocał <marek@allbright.io>
+homepage: https://github.com/allbrightio/effect_bloc/packages/effect_bloc_test
+
+environment:
+  sdk: ">=2.12.0-0 <3.0.0"
+
+dependencies:
+  meta: ^1.3.0
+  bloc: ^7.0.0
+
+dev_dependencies:
+  test: ^1.16.0
