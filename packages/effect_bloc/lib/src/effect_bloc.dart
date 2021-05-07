@@ -21,9 +21,9 @@ abstract class EffectCubit<State, Effect>
   EffectCubit(State initialState) : super(initialState);
 
   @override
-  Future<void> close() {
-    _closeEffect();
-    return super.close();
+  Future<void> close() async {
+    await _closeEffect();
+    super.close();
   }
 }
 
