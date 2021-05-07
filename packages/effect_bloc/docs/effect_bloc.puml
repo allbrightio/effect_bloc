@@ -1,0 +1,15 @@
+@startuml effect_bloc
+
+scale 800 width
+
+title Effect BLoC
+
+left to right direction
+
+[*] --> UI
+
+UI --> Bloc : Event
+
+Bloc --> UI : Effect
+
+@enduml 
