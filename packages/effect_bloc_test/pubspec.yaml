@@ -1,5 +1,5 @@
 name: effect_bloc_test
-description: effect_bloc_test
+description: Flutter widgets used by the effect_bloc library which supports bloc patter with side effects.
 version: 0.0.1
 homepage: https://github.com/allbrightio/effect_bloc/packages/effect_bloc_test
 

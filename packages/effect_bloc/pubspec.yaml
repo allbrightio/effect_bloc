@@ -1,5 +1,5 @@
 name: effect_bloc
-description: effect_bloc
+description: BLoC (Business Logic Component) library wrapper with the side effect support.
 version: 0.0.1
 homepage: https://github.com/allbrightio/effect_bloc
 
