@@ -1,7 +1,6 @@
 name: effect_bloc_test
 description: effect_bloc_test
 version: 0.0.1
-author: Marek Gocał <marek@allbright.io>
 homepage: https://github.com/allbrightio/effect_bloc/packages/effect_bloc_test
 
 environment:
@@ -13,3 +12,4 @@ dependencies:
 
 dev_dependencies:
   test: ^1.16.0
+  lint: ^1.5.3

@@ -1,11 +1,10 @@
 name: flutter_effect_bloc
 description: flutter_effect_bloc
 version: 0.0.1
-author: Marek Gocał <marek@allbright.io>
-homepage: https://github.com/allbrightio/effect_bloc
+homepage: https://github.com/allbrightio/packages/flutter_effect_bloc
 
 environment:
-  sdk: ">=2.12.0-0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -16,7 +15,4 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-dependency_overrides:
-  effect_bloc:
-    path: ../effect_bloc/
+  lint: ^1.5.3

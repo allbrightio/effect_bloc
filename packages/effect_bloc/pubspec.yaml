@@ -1,11 +1,10 @@
 name: effect_bloc
 description: effect_bloc
 version: 0.0.1
-author: Marek Gocał <marek@allbright.io>
 homepage: https://github.com/allbrightio/effect_bloc
 
 environment:
-  sdk: ">=2.12.0-0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   meta: ^1.3.0
@@ -13,3 +12,4 @@ dependencies:
 
 dev_dependencies:
   test: ^1.16.0
+  lint: ^1.5.3
