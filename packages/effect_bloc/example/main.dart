@@ -94,7 +94,7 @@ void blocMain() async {
 enum CounterEffect { started, completed }
 
 /// A `CounterCubit` which manages an `int` as its state.
-class CounterCubit extends EffectCubit<int, CounterEffect> {
+class CounterCubit extends Cubit<int> with BlocEffect<int, CounterEffect> {
   final int count;
 
   /// The initial state of the `CounterCubit` is 0.

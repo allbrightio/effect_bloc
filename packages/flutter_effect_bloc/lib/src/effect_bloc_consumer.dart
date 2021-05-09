@@ -80,7 +80,7 @@ class _EffectBlocConsumerBaseState<E extends EffectBlocBase<T>, T>
 ///
 /// EffectBlocConsumer
 ///
-class EffectBlocConsumer<B extends EffectBlocMixin<S, E>, S, E>
+class EffectBlocConsumer<B extends BlocEffect<S, E>, S, E>
     extends StatelessWidget {
   final BlocWidgetBuilder<S> builder;
   final EffectBlocWidgetListener<E> effectListener;
@@ -108,29 +108,4 @@ class EffectBlocConsumer<B extends EffectBlocMixin<S, E>, S, E>
         effect: bloc,
         effectListener: effectListener);
   }
-}
-
-class MyBloc extends Bloc<int, double> with EffectBlocMixin<double, String> {
-  MyBloc() : super(2.0);
-
-  @override
-  Future<void> close() {
-    closeEffect();
-    return super.close();
-  }
-
-  @override
-  Stream<double> mapEventToState(int event) {
-    throw UnimplementedError();
-  }
-}
-
-void main() {
-  EffectBlocConsumer(
-    bloc: MyBloc(),
-    builder: (BuildContext context, state) {
-      return Text("");
-    },
-    effectListener: (context, effect) {},
-  );
 }

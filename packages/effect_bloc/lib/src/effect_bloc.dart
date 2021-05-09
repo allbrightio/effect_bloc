@@ -7,7 +7,7 @@ import 'package:meta/meta.dart';
 /// Bloc with side effects
 ///
 abstract class EffectBloc<Event, State, Effect> extends Bloc<State, State>
-    with EffectBlocMixin<State, Effect> {
+    with BlocEffect<State, Effect> {
   EffectBloc(State initialState) : super(initialState);
 }
 
@@ -15,7 +15,7 @@ abstract class EffectBloc<Event, State, Effect> extends Bloc<State, State>
 /// Cubit with side effects
 ///
 abstract class EffectCubit<State, Effect> extends Cubit<State>
-    with EffectBlocMixin<State, Effect> {
+    with BlocEffect<State, Effect> {
   EffectCubit(State initialState) : super(initialState);
 }
 
@@ -34,7 +34,7 @@ abstract class EffectBlocBase<Effect> {
 ///
 /// Base class of the effect bloc
 ///
-abstract class EffectBlocMixin<State, Effect>
+abstract class BlocEffect<State, Effect>
     implements BlocBase<State>, EffectBlocBase<Effect> {
   StreamController<Effect>? __effectController;
 
