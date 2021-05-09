@@ -17,7 +17,7 @@ typedef EffectBlocWidgetBuilder<S> = Widget Function(
 class EffectBlocConsumerBase<E extends EffectBlocBase<T>, T>
     extends StatefulWidget {
   final EffectBlocWidgetListener<T> effectListener;
-  final E effect;
+  final E? effect;
   final Widget child;
 
   const EffectBlocConsumerBase({
@@ -40,7 +40,7 @@ class _EffectBlocConsumerBaseState<E extends EffectBlocBase<T>, T>
   @override
   void initState() {
     super.initState();
-    _effect = widget.effect;
+    _effect = widget.effect ?? context.read<E>();
     _subscribe();
   }
 
@@ -48,7 +48,7 @@ class _EffectBlocConsumerBaseState<E extends EffectBlocBase<T>, T>
   void didUpdateWidget(EffectBlocConsumerBase<E, T> oldWidget) {
     super.didUpdateWidget(oldWidget);
     final oldEffect = oldWidget.effect;
-    final currentEffect = widget.effect;
+    final currentEffect = widget.effect ?? context.read<E>();
     if (oldEffect != currentEffect) {
       _effect = currentEffect;
     }
@@ -85,13 +85,13 @@ class EffectBlocConsumer<B extends BlocEffect<S, E>, S, E>
   final BlocWidgetBuilder<S> builder;
   final EffectBlocWidgetListener<E> effectListener;
   final BlocBuilderCondition<S>? buildWhen;
-  final B bloc;
+  final B? bloc;
 
   const EffectBlocConsumer({
     Key? key,
     required this.builder,
     required this.effectListener,
-    required this.bloc,
+    this.bloc,
     this.buildWhen,
   }) : super(key: key);
 
