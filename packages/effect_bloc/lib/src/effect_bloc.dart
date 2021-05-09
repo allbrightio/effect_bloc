@@ -6,30 +6,50 @@ import 'package:meta/meta.dart';
 ///
 /// Bloc with side effects
 ///
-abstract class EffectBloc<Event, State, Effect>
-    extends EffectBlocBase<State, Effect> {
+abstract class EffectBloc<Event, State, Effect> extends Bloc<State, State>
+    with EffectBlocMixin<State, Effect> {
   EffectBloc(State initialState) : super(initialState);
 
-  // TODO bloc implementation
+  @override
+  Future<void> close() {
+    closeEffect();
+    return super.close();
+  }
 }
 
 ///
 /// Cubit with side effects
 ///
-abstract class EffectCubit<State, Effect>
-    extends EffectBlocBase<State, Effect> {
+abstract class EffectCubit<State, Effect> extends Cubit<State>
+    with EffectBlocMixin<State, Effect> {
   EffectCubit(State initialState) : super(initialState);
 
   @override
-  Future<void> close() async {
-    await _closeEffect();
-    super.close();
+  Future<void> close() {
+    closeEffect();
+    return super.close();
   }
 }
 
-abstract class EffectBlocBase<State, Effect> extends BlocBase<State> {
-  EffectBlocBase(State state) : super(state);
+///
+/// Base class of the effect bloc
+///
+abstract class EffectBlocBase<Effect> {
+  Stream<Effect> get effectStream;
 
+  void emitEffect(Effect effect);
+
+  @mustCallSuper
+  void onEffect(Effect effect);
+
+  Future<void> closeEffect();
+}
+
+///
+/// Base class of the effect bloc
+///
+abstract class EffectBlocMixin<State, Effect>
+    implements BlocBase<State>, EffectBlocBase<Effect> {
   StreamController<Effect>? __effectController;
 
   StreamController<Effect> get _effectController {
@@ -37,8 +57,10 @@ abstract class EffectBlocBase<State, Effect> extends BlocBase<State> {
   }
 
   /// The current side effects stream.
+  @override
   Stream<Effect> get effectStream => _effectController.stream;
 
+  @override
   void emitEffect(Effect effect) {
     if (_effectController.isClosed) return;
     onEffect(effect);
@@ -46,15 +68,11 @@ abstract class EffectBlocBase<State, Effect> extends BlocBase<State> {
   }
 
   @mustCallSuper
+  @override
   void onEffect(Effect effect) {}
 
   @override
-  Future<void> close() {
-    _closeEffect();
-    return super.close();
-  }
-
-  Future<void> _closeEffect() async {
+  Future<void> closeEffect() async {
     await _effectController.close();
   }
 }

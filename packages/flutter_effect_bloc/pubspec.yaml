@@ -10,9 +10,22 @@ dependencies:
   flutter:
     sdk: flutter
   effect_bloc: ^0.0.1
-  flutter_bloc: ^7.0.0
+  flutter_bloc:
+    git:
+      url: https://github.com/allbrightio/bloc
+      path: packages/flutter_bloc
+      ref: gocal/bloc_interface
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   lint: ^1.5.3
+
+dependency_overrides:
+  effect_bloc:
+    path: ../effect_bloc/
+  bloc:
+    git:
+      url: https://github.com/allbrightio/bloc
+      path: packages/bloc
+      ref: gocal/bloc_interface

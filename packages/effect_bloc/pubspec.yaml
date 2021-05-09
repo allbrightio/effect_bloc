@@ -8,7 +8,11 @@ environment:
 
 dependencies:
   meta: ^1.3.0
-  bloc: ^7.0.0
+  bloc:
+    git:
+      url: https://github.com/allbrightio/bloc
+      path: packages/bloc
+      ref: gocal/bloc_interface
 
 dev_dependencies:
   test: ^1.16.0
