@@ -5,9 +5,12 @@ publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
+  bloc: ^7.0.0
+  effect_bloc: ^0.0.1
+  flutter_effect_bloc: ^0.0.1
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
@@ -15,6 +18,17 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+dependency_overrides:
+  bloc:
+    git:
+      url: https://github.com/allbrightio/bloc
+      path: packages/bloc
+      ref: gocal/bloc_interface
+  effect_bloc:
+    path: ../../packages/effect_bloc
+  flutter_effect_bloc:
+    path: ../../packages/flutter_effect_bloc
 
 flutter:
   uses-material-design: true
