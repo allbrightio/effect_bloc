@@ -9,12 +9,6 @@ import 'package:meta/meta.dart';
 abstract class EffectBloc<Event, State, Effect> extends Bloc<State, State>
     with EffectBlocMixin<State, Effect> {
   EffectBloc(State initialState) : super(initialState);
-
-  @override
-  Future<void> close() {
-    closeEffect();
-    return super.close();
-  }
 }
 
 ///
@@ -23,12 +17,6 @@ abstract class EffectBloc<Event, State, Effect> extends Bloc<State, State>
 abstract class EffectCubit<State, Effect> extends Cubit<State>
     with EffectBlocMixin<State, Effect> {
   EffectCubit(State initialState) : super(initialState);
-
-  @override
-  Future<void> close() {
-    closeEffect();
-    return super.close();
-  }
 }
 
 ///
@@ -41,8 +29,6 @@ abstract class EffectBlocBase<Effect> {
 
   @mustCallSuper
   void onEffect(Effect effect);
-
-  Future<void> closeEffect();
 }
 
 ///
@@ -71,8 +57,13 @@ abstract class EffectBlocMixin<State, Effect>
   @override
   void onEffect(Effect effect) {}
 
+  @mustCallSuper
   @override
-  Future<void> closeEffect() async {
+  Future<void> close() async {
+    await _closeEffect();
+  }
+
+  Future<void> _closeEffect() async {
     await _effectController.close();
   }
 }
