@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_effect_bloc/flutter_effect_bloc.dart';
-import 'package:flutter_navigation/view/home/home_page.dart';
+import 'package:flutter_freezed/view/home/home_page.dart';
 
 import 'login_bloc.dart';
 
@@ -23,19 +23,11 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return EffectBlocConsumer<LoginBloc, LoginState, LoginEffect>(
         effectListener: (context, effect) {
-      switch (effect) {
-        case LoginEffect.errorIO:
-          _showIoError(context);
-          break;
-        case LoginEffect.errorInvalidCredentials:
-          _showInvalidCredentialsError(context);
-          break;
-        case LoginEffect.loggedIn:
-          _goToHomePage(context);
-          break;
-      }
-
-      //
+      effect.when(
+        errorIO: (code) => _showIoError(context),
+        errorInvalidCredentials: () => _showInvalidCredentialsError(context),
+        loggedIn: () => _goToHomePage(context),
+      );
     }, builder: (_, state) {
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
